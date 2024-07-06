@@ -1,1 +1,22 @@
-spring.application.name=csv-processor
+spring:
+  application:
+    name: csv-processor
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password: password
+  h2:
+    console:
+      enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+logging:
+  level:
+    org:
+      springframework:
+        web: DEBUG
+    root: INFO
+springdoc:
+  show-actuator: true
