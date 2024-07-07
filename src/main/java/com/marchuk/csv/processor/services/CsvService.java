@@ -16,5 +16,12 @@ public interface CsvService {
      */
     void saveCsv(MultipartFile file);
 
+    /**
+     * Searches for {@link SimpleCsv} entities based on a query string.
+     *
+     * @param query The search query string.
+     * @return A list of {@link SimpleCsv} entities matching the search criteria.
+     */
     List<SimpleCsv> search(String query);
+
 }
