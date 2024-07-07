@@ -1,10 +1,12 @@
 package com.marchuk.csv.processor.entities;
 
-import com.opencsv.bean.CsvBindByName;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import lombok.*;
+import org.hibernate.annotations.NaturalId;
+import org.hibernate.search.mapper.pojo.mapping.definition.annotation.FullTextField;
+import org.hibernate.search.mapper.pojo.mapping.definition.annotation.Indexed;
 
 @Entity
 @Builder
@@ -12,20 +14,23 @@ import lombok.*;
 @AllArgsConstructor
 @Setter
 @Getter
+@Indexed
 public class SimpleCsv {
 
     @Id
     @GeneratedValue
-    @CsvBindByName(required = true)
     private Integer id;
 
-    @CsvBindByName(required = true)
+    @FullTextField
+    @NaturalId
     private String firstName;
 
-    @CsvBindByName(required = true)
+    @FullTextField
+    @NaturalId
     private String lastName;
 
-    @CsvBindByName(required = true)
+    @FullTextField
+    @NaturalId
     private String email;
 
 }

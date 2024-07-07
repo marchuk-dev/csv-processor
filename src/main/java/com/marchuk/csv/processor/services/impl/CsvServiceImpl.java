@@ -24,13 +24,7 @@ public class CsvServiceImpl implements CsvService {
 
     private final SimpleCsvRepository repository;
 
-    /**
-     * Saves CSV data from the provided MultipartFile.
-     * Detects the delimiter and maps the CSV data to SimpleCsv entities, then saves them to the repository.
-     *
-     * @param file the CSV file to be processed and saved.
-     * @throws RuntimeException if an error occurs during processing.
-     */
+    @Override
     public void saveCsv(MultipartFile file) {
         char delimiter = detectDelimiter(file);
         try (Reader targetReader = new BufferedReader(new InputStreamReader(file.getInputStream()))) {
@@ -41,6 +35,11 @@ public class CsvServiceImpl implements CsvService {
         } catch (IOException exception) {
             throw new UncheckedIOException(exception);
         }
+    }
+
+    @Override
+    public List<SimpleCsv> search(String query) {
+        return repository.search(query, SimpleCsv.class);
     }
 
     /**

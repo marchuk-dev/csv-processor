@@ -12,6 +12,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create-drop
+    show-sql: true
 logging:
   level:
     org:
@@ -20,3 +21,10 @@ logging:
     root: INFO
 springdoc:
   show-actuator: true
+  swagger-ui:
+    enabled: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
